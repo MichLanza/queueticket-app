@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { TicketController } from "./controller";
+import { TicketService } from "../services/ticket.service";
 
 export class TicketRoutes {
 
@@ -7,8 +8,8 @@ export class TicketRoutes {
     static get routes() {
 
         const router = Router();
-
-        const controller = new TicketController();
+        const service = new TicketService();
+        const controller = new TicketController(service);
 
 
         router.get('/',controller.getTickets);
